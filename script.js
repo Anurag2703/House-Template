@@ -78,5 +78,36 @@ $(function(){
         // How many windows fit in the wall?
         windowscount = $(".homeslider .home .walls .right .window:not(.effect):visible").length;
         eachwallwidth = (wallwidth - centerwall) / 2;
+
+        windowfitonwall = Math.floor(eachwallwidth / windowwidth);
+        console.log(windowfitonwall);
+        if(windowfitonwall >= 0){
+            if(
+                windowfitonwall > windowscount &&
+                windowfitonwall <= $(".homeslider .home .walls .right .window").length
+            ){
+                while(windowfitonwall > windowscount){
+                    $(".homeslider .home .walls .right .window:hidden").eq(0).removeClass("effect").show();
+                    $(".homeslider .home .walls .left .window:hidden").eq(0)..removeClass("effect").show();
+                    windowscount++;
+                }
+            }else if(windowfitonwall < windowscount){
+
+                while(windowfitonwall < windowscount){
+                    console.log($(".homeslider .home .walls .right .window:not(.effect):visible").eq(0));
+                    $(".homeslider .home .walls .right .window:not(.effect):visible").eq(0).addClass("effect").fadeout();
+                    $(".homeslider .home .walls .left .window:not(.effect):visible").eq(0).addClass("effect").fadeout();
+                    windowscount--;
+                }
+            }
+        }
+
+        // Change center window effect
+        if(inputrange.value - inputrange.min <= 3){
+            $(".homeslider .home .walls .center .frontwindow").addClass("effect");
+        }
+        if(inputrange.value - inputrange.min > 3){
+            $(".homeslider .home .walls .center .frontwindow").removeClass("effect");
+        }
     }
 });
