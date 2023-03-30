@@ -76,6 +76,7 @@ $(function(){
         }, 700);
 
         // How many windows fit in the wall?
-        
+        windowscount = $(".homeslider .home .walls .right .window:not(.effect):visible").length;
+        eachwallwidth = (wallwidth - centerwall) / 2;
     }
 });
